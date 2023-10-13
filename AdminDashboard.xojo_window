@@ -145,7 +145,7 @@ End
 		  Var rowsFound As RowSet
 		  Try
 		    
-		    rowsFound =app.db.SelectSQL("SELECT * FROM Students")
+		    
 		    For Each row As DatabaseRow in rowsFound
 		      Listbox1.Addrow(row.Column("First Name").StringValue, row.Column("Last Name").StringValue, row.Column("Status").StringValue)
 		      

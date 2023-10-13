@@ -3,18 +3,27 @@ Protected Class App
 Inherits DesktopApplication
 	#tag Event
 		Sub Opening()
-		  db = New SQLiteDatabase
-		  db.DatabaseFile = SpecialFolder.Desktop.Child("chinook")
-		  try
+		  
+		  Var x As New MainLoginWindow
+		  
+		  
+		  Var db As New SQLiteDatabase
+		  
+		  Var dbFile As FolderItem = FolderItem.ShowOpenFileDialog("")
+		  
+		  If dbFile <> Nil And dbFile.Exists Then
+		    db.DatabaseFile = dbFile
 		    
-		    db.connect
-		    Var w As New AdminDashboard
-		    
-		  catch ErrorException as DatabaseException 
-		    System.beep
-		    MessageBox("Something went wrong")
-		  End try 
-		  break
+		    Try
+		      db.Connect
+		      MessageBox("Connected to database successfully!")
+		      Var w As New AdminDashboard
+		      
+		    Catch error As DatabaseException
+		      MessageBox("DB Connection Error: " + error.Message)
+		    End Try
+		  End If
+		  
 		End Sub
 	#tag EndEvent
 
