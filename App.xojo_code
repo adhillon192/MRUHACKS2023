@@ -3,15 +3,16 @@ Protected Class App
 Inherits DesktopApplication
 	#tag Event
 		Sub Opening()
-		  DB = New SQLiteDatabase
-		  // local file path
+		  db = New SQLiteDatabase
+		  db.DatabaseFile = SpecialFolder.Desktop.Child("chinook")
 		  try
 		    
-		    DB.Connect
+		    db.connect
+		    Var w As New AdminDashboard
 		    
 		  catch ErrorException as DatabaseException 
 		    System.beep
-		    MessageBox["Something went wrong"]
+		    MessageBox("Something went wrong")
 		  End try 
 		  break
 		End Sub
@@ -19,7 +20,7 @@ Inherits DesktopApplication
 
 
 	#tag Property, Flags = &h0
-		DB As SQLiteDatabase
+		db As SQLiteDatabase
 	#tag EndProperty
 
 
@@ -177,14 +178,6 @@ Inherits DesktopApplication
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="_CurrentEventTime"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="DB"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

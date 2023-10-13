@@ -169,6 +169,7 @@ Begin DesktopWindow MainLoginWindow
       Width           =   80
    End
    Begin DesktopBevelButton BevelButton1
+      Active          =   False
       AllowAutoDeactivate=   True
       AllowFocus      =   True
       AllowTabStop    =   True
@@ -200,6 +201,7 @@ Begin DesktopWindow MainLoginWindow
       LockRight       =   False
       LockTop         =   True
       MenuStyle       =   0
+      PanelIndex      =   0
       Scope           =   0
       TabIndex        =   4
       TabPanelIndex   =   0
@@ -211,6 +213,10 @@ Begin DesktopWindow MainLoginWindow
       Value           =   False
       Visible         =   True
       Width           =   60
+      _mIndex         =   0
+      _mInitialParent =   ""
+      _mName          =   ""
+      _mPanelIndex    =   0
    End
    Begin DesktopCanvas Canvas1
       AllowAutoDeactivate=   True
