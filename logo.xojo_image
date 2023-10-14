@@ -1,0 +1,43 @@
+#tag MultiImage
+Image logo
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAA6QzpcVXNlcnNcZGhpbGxcT25lRHJpdmVcRG9jdW1lbnRzXEdpdEh1YlxtcnVoYWNrc1xsb2dvLmpwZwMAAAAAAQAEAAAAAAEAAAAAAAAA
+		FullPath = C:\Users\dhill\OneDrive\Documents\GitHub\mruhacks\logo.jpg
+		PartialPath = logo.jpg
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = 2048.00
+			Orientation = Any
+			Platform = 15
+			PPI = 72
+			VSize = 2048.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		SaveInfo = APHRcwECAQAAAAA6QzpcVXNlcnNcZGhpbGxcT25lRHJpdmVcRG9jdW1lbnRzXEdpdEh1YlxtcnVoYWNrc1xsb2dvLmpwZwMAAAAAAQAEAAAAAAEAAAAAAAAA
+		FullPath = C:\Users\dhill\OneDrive\Documents\GitHub\mruhacks\logo.jpg
+		PartialPath = logo.jpg
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = 2048.00
+			Orientation = Any
+			Platform = 15
+			PPI = 144
+			VSize = 2048.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+	#tag ImageRepresentation
+		#tag ImageSpecification
+			Comment = 
+			Device = 31
+			HSize = -1.00
+			Orientation = Any
+			Platform = 15
+			PPI = 216
+			VSize = -1.00
+		#tag EndImageSpecification
+	#tag EndImageRepresentation
+End Image
+#tag EndMultiImage

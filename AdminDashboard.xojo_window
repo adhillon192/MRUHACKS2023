@@ -69,6 +69,7 @@ Begin DesktopWindow AdminDashboard
       Underline       =   False
       Visible         =   True
       Width           =   494
+      _ScrollOffset   =   0
       _ScrollWidth    =   -1
    End
    Begin DesktopLabel Label1
@@ -103,6 +104,37 @@ Begin DesktopWindow AdminDashboard
       Visible         =   True
       Width           =   100
    End
+   Begin DesktopButton Button1
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      Cancel          =   False
+      Caption         =   "Refresh"
+      Default         =   True
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   22
+      Index           =   -2147483648
+      Italic          =   False
+      Left            =   431
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      MacButtonStyle  =   0
+      Scope           =   0
+      TabIndex        =   2
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   20
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
+   End
 End
 #tag EndDesktopWindow
 
@@ -110,6 +142,18 @@ End
 	#tag Method, Flags = &h0
 		Sub QueryDB()
 		  ListBox1.RemoveAllRows
+		  Var rowsFound As RowSet
+		  Try
+		    
+		    
+		    For Each row As DatabaseRow in rowsFound
+		      Listbox1.Addrow(row.Column("First Name").StringValue, row.Column("Last Name").StringValue, row.Column("Status").StringValue)
+		      
+		    Next
+		  Catch error as DatabaseException
+		    System.beep
+		    MessageBox("Something went wrong with the database Error:101")
+		  End Try
 		  
 		End Sub
 	#tag EndMethod
@@ -123,6 +167,13 @@ End
 
 #tag EndWindowCode
 
+#tag Events Button1
+	#tag Event
+		Sub Pressed()
+		  QueryDB
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Name"

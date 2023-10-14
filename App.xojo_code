@@ -3,23 +3,33 @@ Protected Class App
 Inherits DesktopApplication
 	#tag Event
 		Sub Opening()
-		  DB = New SQLiteDatabase
-		  // local file path
-		  try
+		  
+		  Var x As New MainLoginWindow
+		  
+		  
+		  Var db As New SQLiteDatabase
+		  
+		  Var dbFile As FolderItem = FolderItem.ShowOpenFileDialog("")
+		  
+		  If dbFile <> Nil And dbFile.Exists Then
+		    db.DatabaseFile = dbFile
 		    
-		    DB.Connect
-		    
-		  catch ErrorException as DatabaseException 
-		    System.beep
-		    MessageBox["Something went wrong"]
-		  End try 
-		  break
+		    Try
+		      db.Connect
+		      MessageBox("Connected to database successfully!")
+		      Var w As New AdminDashboard
+		      
+		    Catch error As DatabaseException
+		      MessageBox("DB Connection Error: " + error.Message)
+		    End Try
+		  End If
+		  
 		End Sub
 	#tag EndEvent
 
 
 	#tag Property, Flags = &h0
-		DB As SQLiteDatabase
+		db As SQLiteDatabase
 	#tag EndProperty
 
 
@@ -177,14 +187,6 @@ Inherits DesktopApplication
 		#tag EndViewProperty
 		#tag ViewProperty
 			Name="_CurrentEventTime"
-			Visible=false
-			Group="Behavior"
-			InitialValue=""
-			Type="Integer"
-			EditorType=""
-		#tag EndViewProperty
-		#tag ViewProperty
-			Name="DB"
 			Visible=false
 			Group="Behavior"
 			InitialValue=""

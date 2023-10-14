@@ -24,46 +24,53 @@ Begin DesktopWindow TeacherDashboard
    Type            =   0
    Visible         =   True
    Width           =   600
-   Begin DesktopTextField TextField1
+   Begin DesktopListBox ListBox1
       AllowAutoDeactivate=   True
+      AllowAutoHideScrollbars=   True
+      AllowExpandableRows=   False
       AllowFocusRing  =   True
-      AllowSpellChecking=   False
-      AllowTabs       =   False
-      BackgroundColor =   &cFFFFFF
+      AllowResizableColumns=   False
+      AllowRowDragging=   False
+      AllowRowReordering=   False
       Bold            =   False
+      ColumnCount     =   3
+      ColumnWidths    =   ""
+      DefaultRowHeight=   -1
+      DropIndicatorVisible=   False
       Enabled         =   True
       FontName        =   "System"
       FontSize        =   0.0
       FontUnit        =   0
-      Format          =   ""
+      GridLineStyle   =   2
       HasBorder       =   True
-      Height          =   22
-      Hint            =   ""
+      HasHeader       =   True
+      HasHorizontalScrollbar=   False
+      HasVerticalScrollbar=   True
+      HeadingIndex    =   -1
+      Height          =   294
       Index           =   -2147483648
+      InitialValue    =   "First Name 	Last Name 	Status\r\n"
       Italic          =   False
-      Left            =   260
+      Left            =   47
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
       LockRight       =   False
       LockTop         =   True
-      MaximumCharactersAllowed=   0
-      Password        =   False
-      ReadOnly        =   False
+      RequiresSelection=   False
+      RowSelectionType=   0
       Scope           =   0
       TabIndex        =   0
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   ""
-      TextAlignment   =   0
-      TextColor       =   &c000000
       Tooltip         =   ""
-      Top             =   79
+      Top             =   53
       Transparent     =   False
       Underline       =   False
-      ValidationMask  =   ""
       Visible         =   True
-      Width           =   235
+      Width           =   494
+      _ScrollOffset   =   0
+      _ScrollWidth    =   -1
    End
    Begin DesktopLabel Label1
       AllowAutoDeactivate=   True
@@ -75,7 +82,7 @@ Begin DesktopWindow TeacherDashboard
       Height          =   20
       Index           =   -2147483648
       Italic          =   False
-      Left            =   131
+      Left            =   244
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -87,20 +94,71 @@ Begin DesktopWindow TeacherDashboard
       TabIndex        =   1
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "Student ID:"
+      Text            =   "Teacher Dashboard"
       TextAlignment   =   0
       TextColor       =   &c000000
       Tooltip         =   ""
-      Top             =   81
+      Top             =   20
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   100
+      Width           =   108
+   End
+   Begin DesktopButton Button1
+      AllowAutoDeactivate=   True
+      Bold            =   False
+      Cancel          =   False
+      Caption         =   "Refresh"
+      Default         =   True
+      Enabled         =   True
+      FontName        =   "System"
+      FontSize        =   0.0
+      FontUnit        =   0
+      Height          =   22
+      Index           =   -2147483648
+      Italic          =   False
+      Left            =   431
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      MacButtonStyle  =   0
+      Scope           =   0
+      TabIndex        =   2
+      TabPanelIndex   =   0
+      TabStop         =   True
+      Tooltip         =   ""
+      Top             =   20
+      Transparent     =   False
+      Underline       =   False
+      Visible         =   True
+      Width           =   80
    End
 End
 #tag EndDesktopWindow
 
 #tag WindowCode
+	#tag Method, Flags = &h0
+		Sub QueryDB()
+		  ListBox1.RemoveAllRows
+		  Var rowsFound As RowSet
+		  Try
+		    
+		    
+		    For Each row As DatabaseRow in rowsFound
+		      Listbox1.Addrow(row.Column("First Name").StringValue, row.Column("Last Name").StringValue, row.Column("Status").StringValue)
+		      
+		    Next
+		  Catch error as DatabaseException
+		    System.beep
+		    MessageBox("Something went wrong with the database Error:101")
+		  End Try
+		  
+		End Sub
+	#tag EndMethod
+
+
 	#tag Note, Name = Main Login Screen
 		
 		
@@ -109,6 +167,13 @@ End
 
 #tag EndWindowCode
 
+#tag Events Button1
+	#tag Event
+		Sub Pressed()
+		  QueryDB
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Name"
