@@ -24,7 +24,7 @@ Begin DesktopWindow MainLoginWindow
    Type            =   6
    Visible         =   True
    Width           =   600
-   Begin DesktopTextField TextField1
+   Begin DesktopTextField TextFieldUsername
       AllowAutoDeactivate=   True
       AllowFocusRing  =   True
       AllowSpellChecking=   False
@@ -127,7 +127,7 @@ Begin DesktopWindow MainLoginWindow
       Visible         =   True
       Width           =   80
    End
-   Begin DesktopTextField TextField2
+   Begin DesktopTextField TextFieldPassword
       AllowAutoDeactivate=   True
       AllowFocusRing  =   True
       AllowSpellChecking=   False
@@ -265,6 +265,31 @@ End
 #tag EndDesktopWindow
 
 #tag WindowCode
+	#tag Method, Flags = &h0
+		Sub OpenMainWindowforRole()
+		  
+		End Sub
+	#tag EndMethod
+
+	#tag Method, Flags = &h0
+		Sub OpenMainWindowForRole(userRole As String)
+		  Select Case userRole
+		  Case "admin"
+		    Dim adminWin As New AdminDashboard
+		    adminWin.Show
+		  Case "teacher"
+		    Dim userWin As New TeacherDashboard
+		    userWin.Show
+		  Case "student"
+		    Dim guestWin As New StudentDashboard
+		    guestWin.Show
+		  Case Else
+		    MessageBox("Unknown role. Cannot open a main window.")
+		  End Select
+		End Sub
+	#tag EndMethod
+
+
 	#tag Note, Name = Main Login Screen
 		
 		
@@ -276,6 +301,44 @@ End
 #tag Events Button1
 	#tag Event
 		Sub Pressed()
+		  Dim username As String = TextFieldUsername.Text
+		  Dim password As String = TextFieldPassword.Text
+		  
+		  Var db As New SQLiteDatabase
+		  
+		  Var dbFile As FolderItem = FolderItem.ShowOpenFileDialog("")
+		  
+		  If dbFile <> Nil And dbFile.Exists Then
+		    db.DatabaseFile = dbFile
+		    
+		  End if
+		  
+		  Try
+		    db.Connect
+		    MessageBox("Connected to database successfully!")
+		    
+		    
+		  Catch error As DatabaseException
+		    MessageBox("DB Connection Error: " + error.Message)
+		  End Try
+		  
+		  Dim query As String = "SELECT role FROM users WHERE username ='"+username + "' AND password = '"+ password + "'"
+		  Dim result As RecordSet
+		  
+		  Try
+		    MessageBox(query)
+		    result = db.SQLSelect(query)
+		    
+		    If result <> Nil Then
+		      Dim userRole As String = result.Field("role").StringValue
+		      // useRole is coming out empty.
+		      OpenMainWindowForRole(userRole)
+		    Else
+		      MessageBox("Login failed. Please check your credentials.")
+		    End If
+		  Catch e As DatabaseException
+		    MessageBox("Database Error: " + e.Message)
+		  End Try
 		  
 		End Sub
 	#tag EndEvent

@@ -4,7 +4,7 @@ Inherits DesktopApplication
 	#tag Event
 		Sub Opening()
 		  
-		  Var x As New MainLoginWindow
+		  
 		  
 		  
 		  Var db As New SQLiteDatabase
@@ -17,7 +17,7 @@ Inherits DesktopApplication
 		    Try
 		      db.Connect
 		      MessageBox("Connected to database successfully!")
-		      Var w As New AdminDashboard
+		      Dim w As New MainLoginWindow
 		      
 		    Catch error As DatabaseException
 		      MessageBox("DB Connection Error: " + error.Message)
