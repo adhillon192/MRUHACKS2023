@@ -315,7 +315,7 @@ End
 		  
 		  Try
 		    db.Connect
-		    MessageBox("Connected to database successfully!")
+		    
 		    
 		    
 		  Catch error As DatabaseException
@@ -326,7 +326,7 @@ End
 		  Dim result As RecordSet
 		  
 		  Try
-		    MessageBox(query)
+		    
 		    result = db.SQLSelect(query)
 		    
 		    If result <> Nil Then

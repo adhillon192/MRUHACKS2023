@@ -16,7 +16,7 @@ Inherits DesktopApplication
 		    
 		    Try
 		      db.Connect
-		      MessageBox("Connected to database successfully!")
+		      
 		      Dim w As New MainLoginWindow
 		      
 		    Catch error As DatabaseException
