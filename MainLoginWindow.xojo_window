@@ -1,11 +1,11 @@
 #tag DesktopWindow
 Begin DesktopWindow MainLoginWindow
    Backdrop        =   0
-   BackgroundColor =   &cFFFFFF
+   BackgroundColor =   &cEEB70F00
    Composite       =   False
    DefaultLocation =   2
    FullScreen      =   False
-   HasBackgroundColor=   False
+   HasBackgroundColor=   True
    HasCloseButton  =   True
    HasFullScreenButton=   False
    HasMaximizeButton=   True
@@ -20,8 +20,8 @@ Begin DesktopWindow MainLoginWindow
    MinimumHeight   =   64
    MinimumWidth    =   64
    Resizeable      =   True
-   Title           =   "Untitled"
-   Type            =   0
+   Title           =   "Welcome"
+   Type            =   6
    Visible         =   True
    Width           =   600
    Begin DesktopTextField TextField1
@@ -29,7 +29,7 @@ Begin DesktopWindow MainLoginWindow
       AllowFocusRing  =   True
       AllowSpellChecking=   False
       AllowTabs       =   False
-      BackgroundColor =   &cFFFFFF
+      BackgroundColor =   &cFFFFFF00
       Bold            =   False
       Enabled         =   True
       FontName        =   "System"
@@ -41,7 +41,7 @@ Begin DesktopWindow MainLoginWindow
       Hint            =   ""
       Index           =   -2147483648
       Italic          =   False
-      Left            =   270
+      Left            =   225
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -58,18 +58,18 @@ Begin DesktopWindow MainLoginWindow
       TextAlignment   =   0
       TextColor       =   &c000000
       Tooltip         =   ""
-      Top             =   199
+      Top             =   212
       Transparent     =   False
       Underline       =   False
       ValidationMask  =   ""
       Visible         =   True
-      Width           =   80
+      Width           =   150
    End
    Begin DesktopButton Button1
       AllowAutoDeactivate=   True
       Bold            =   False
       Cancel          =   False
-      Caption         =   "OK"
+      Caption         =   "Submit"
       Default         =   True
       Enabled         =   True
       FontName        =   "System"
@@ -109,7 +109,7 @@ Begin DesktopWindow MainLoginWindow
       Height          =   22
       Index           =   -2147483648
       Italic          =   False
-      Left            =   342
+      Left            =   321
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -144,7 +144,7 @@ Begin DesktopWindow MainLoginWindow
       Hint            =   ""
       Index           =   -2147483648
       Italic          =   False
-      Left            =   270
+      Left            =   225
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -166,94 +166,19 @@ Begin DesktopWindow MainLoginWindow
       Underline       =   False
       ValidationMask  =   ""
       Visible         =   True
-      Width           =   80
+      Width           =   150
    End
-   Begin DesktopBevelButton BevelButton1
-      Active          =   False
-      AllowAutoDeactivate=   True
-      AllowFocus      =   True
-      AllowTabStop    =   True
-      BackgroundColor =   &c00000000
-      BevelStyle      =   0
-      Bold            =   False
-      ButtonStyle     =   0
-      Caption         =   "Untitled"
-      CaptionAlignment=   3
-      CaptionDelta    =   0
-      CaptionPosition =   1
-      Enabled         =   True
-      FontName        =   "Consolas"
-      FontSize        =   0.0
-      FontUnit        =   0
-      HasBackgroundColor=   False
-      Height          =   22
-      Icon            =   0
-      IconAlignment   =   0
-      IconDeltaX      =   0
-      IconDeltaY      =   0
-      Index           =   -2147483648
-      InitialParent   =   ""
-      Italic          =   False
-      Left            =   270
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      MenuStyle       =   0
-      PanelIndex      =   0
-      Scope           =   0
-      TabIndex        =   4
-      TabPanelIndex   =   0
-      TextColor       =   &c00000000
-      Tooltip         =   ""
-      Top             =   87
-      Transparent     =   False
-      Underline       =   False
-      Value           =   False
-      Visible         =   True
-      Width           =   60
-      _mIndex         =   0
-      _mInitialParent =   ""
-      _mName          =   ""
-      _mPanelIndex    =   0
-   End
-   Begin DesktopCanvas Canvas1
-      AllowAutoDeactivate=   True
-      AllowFocus      =   False
-      AllowFocusRing  =   True
-      AllowTabs       =   False
-      Backdrop        =   0
-      Enabled         =   True
-      Height          =   100
-      Index           =   -2147483648
-      Left            =   261
-      LockBottom      =   False
-      LockedInPosition=   False
-      LockLeft        =   True
-      LockRight       =   False
-      LockTop         =   True
-      Scope           =   0
-      TabIndex        =   5
-      TabPanelIndex   =   0
-      TabStop         =   True
-      Tooltip         =   ""
-      Top             =   56
-      Transparent     =   True
-      Visible         =   True
-      Width           =   100
-   End
-   Begin DesktopLabel Label1
+   Begin DesktopLabel Username
       AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
       FontName        =   "System"
       FontSize        =   0.0
       FontUnit        =   0
-      Height          =   20
+      Height          =   22
       Index           =   -2147483648
       Italic          =   False
-      Left            =   149
+      Left            =   137
       LockBottom      =   False
       LockedInPosition=   False
       LockLeft        =   True
@@ -265,17 +190,17 @@ Begin DesktopWindow MainLoginWindow
       TabIndex        =   6
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "Untitled"
+      Text            =   "Username"
       TextAlignment   =   0
       TextColor       =   &c000000
       Tooltip         =   ""
-      Top             =   199
+      Top             =   212
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   100
+      Width           =   69
    End
-   Begin DesktopLabel Label2
+   Begin DesktopLabel Password
       AllowAutoDeactivate=   True
       Bold            =   False
       Enabled         =   True
@@ -297,7 +222,7 @@ Begin DesktopWindow MainLoginWindow
       TabIndex        =   7
       TabPanelIndex   =   0
       TabStop         =   True
-      Text            =   "Untitled"
+      Text            =   "Password"
       TextAlignment   =   0
       TextColor       =   &c000000
       Tooltip         =   ""
@@ -305,7 +230,36 @@ Begin DesktopWindow MainLoginWindow
       Transparent     =   False
       Underline       =   False
       Visible         =   True
-      Width           =   100
+      Width           =   54
+   End
+   Begin DesktopImageViewer ImageViewer1
+      Active          =   False
+      AllowAutoDeactivate=   True
+      AllowTabStop    =   True
+      Enabled         =   True
+      Height          =   150
+      Image           =   702228479
+      Index           =   -2147483648
+      InitialParent   =   ""
+      Left            =   225
+      LockBottom      =   False
+      LockedInPosition=   False
+      LockLeft        =   True
+      LockRight       =   False
+      LockTop         =   True
+      PanelIndex      =   0
+      Scope           =   0
+      TabIndex        =   8
+      TabPanelIndex   =   0
+      Tooltip         =   ""
+      Top             =   30
+      Transparent     =   False
+      Visible         =   True
+      Width           =   150
+      _mIndex         =   0
+      _mInitialParent =   ""
+      _mName          =   ""
+      _mPanelIndex    =   0
    End
 End
 #tag EndDesktopWindow
@@ -319,6 +273,13 @@ End
 
 #tag EndWindowCode
 
+#tag Events Button1
+	#tag Event
+		Sub Pressed()
+		  
+		End Sub
+	#tag EndEvent
+#tag EndEvents
 #tag ViewBehavior
 	#tag ViewProperty
 		Name="Name"
